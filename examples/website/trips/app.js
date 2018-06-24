@@ -104,6 +104,7 @@ export class App extends Component {
         initialViewState={INITIAL_VIEW_STATE}
         viewState={viewState}
         controller={controller}
+        animateLayers
       >
         {baseMap && (
           <StaticMap

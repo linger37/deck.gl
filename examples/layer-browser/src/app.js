@@ -288,6 +288,7 @@ export default class App extends PureComponent {
           viewState={infovis ? orbitViewState : {...mapViewState, position: [0, 0, 50]}}
           onViewStateChange={this._onViewStateChange}
           effects={effects ? this._effects : []}
+          animateLayers
           pickingRadius={pickingRadius}
           onLayerHover={this._onHover}
           onLayerClick={this._onClick}

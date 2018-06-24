@@ -88,14 +88,17 @@ export default class ScatterplotLayer extends Layer {
   }
 
   draw({uniforms}) {
+    const {tick} = this.context.animationProps;
+    const scaleFactor = 1 + 0.5 * Math.sin(tick / 30);
+
     const {radiusScale, radiusMinPixels, radiusMaxPixels, outline, strokeWidth} = this.props;
     this.state.model.render(
       Object.assign({}, uniforms, {
         outline: outline ? 1 : 0,
         strokeWidth,
-        radiusScale,
+        radiusScale: radiusScale * scaleFactor,
         radiusMinPixels,
-        radiusMaxPixels
+        radiusMaxPixels: radiusMaxPixels * scaleFactor
       })
     );
   }

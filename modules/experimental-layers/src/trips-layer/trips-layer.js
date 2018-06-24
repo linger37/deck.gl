@@ -36,22 +36,6 @@ export default class TripsLayer extends Layer {
     }
   }
 
-  draw({uniforms}) {
-    // Animate current time
-    const timestamp = Date.now();
-    const loopLength = 1800;
-    const loopTime = 60000;
-    const currentTime = ((timestamp % loopTime) / loopTime) * loopLength;
-
-    const {trailLength} = this.props;
-    this.state.model.render(
-      Object.assign({}, uniforms, {
-        trailLength,
-        currentTime: this.props.currentTime || currentTime
-      })
-    );
-  }
-
   getModel(gl) {
     return new Model(gl, {
       id: this.props.id,
@@ -92,6 +76,16 @@ export default class TripsLayer extends Layer {
       return [...acc, l];
     }, []);
     this.setState({pathLengths, vertexCount});
+  }
+
+  draw({uniforms}) {
+    const {trailLength, currentTime} = this.props;
+    this.state.model.render(
+      Object.assign({}, uniforms, {
+        trailLength,
+        currentTime
+      })
+    );
   }
 
   calculateIndices(attribute) {
