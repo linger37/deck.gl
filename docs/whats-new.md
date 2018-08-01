@@ -2,10 +2,18 @@
 
 This page contains highlights of each deck.gl release. Also check our [vis.gl blog](https://medium.com/vis-gl) for news about new releases and features in deck.gl.
 
+## deck.gl v6.1
+
+Release date: TBD
+
+### Projection Modes
+
+- `LNGLAT_EXPERIMENTAL` mode
+- LNGLAT projection modes automatically wrap coordinates over the 180th meridian for the best placement in the current viewport. Set the `wrapCoordinates` prop in a layer to `false` to disable this behavior.
 
 ## deck.gl v6.0
 
-Release date: TBD, target late Q2, 2018
+Release date: July 17, 2018
 
 <table style="border: 0;" align="center">
   <tbody>
