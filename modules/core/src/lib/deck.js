@@ -60,7 +60,7 @@ function getPropTypes(PropTypes) {
     viewState: PropTypes.object,
     effects: PropTypes.arrayOf(PropTypes.instanceOf(Effect)),
     controller: PropTypes.oneOfType([PropTypes.func, PropTypes.bool, PropTypes.object]),
-    animateLayers: false,
+    animateLayers: PropTypes.bool,
 
     // GL settings
     gl: PropTypes.object,

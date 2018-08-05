@@ -80,12 +80,14 @@ export default class TripsLayer extends Layer {
 
   draw({uniforms}) {
     const {trailLength, currentTime} = this.props;
-    this.state.model.render(
+    this.state.model.setUniforms(
       Object.assign({}, uniforms, {
         trailLength,
         currentTime
       })
     );
+
+    this.state.model.draw();
   }
 
   calculateIndices(attribute) {

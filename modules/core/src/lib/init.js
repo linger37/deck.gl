@@ -52,3 +52,16 @@ if (!console.table) {
 
 // Make sure we register shader modules
 require('../shaderlib');
+
+// HACK to fix animation - remove when luma.gl is bumped
+
+import {Model} from 'luma.gl';
+
+// Refreshes animated uniforms, attempting to get animated props from animationLoop if registered
+Model.prototype._refreshAnimationProps = function _refreshAnimationProps(animationProps) {
+  // Try to read animationProps
+  animationProps = animationProps || (this.animationLoop && this.animationLoop.animationProps);
+  if (animationProps) {
+    this._setAnimationProps(animationProps);
+  }
+};
