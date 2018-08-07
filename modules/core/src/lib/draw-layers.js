@@ -66,6 +66,7 @@ export function drawLayers(
   {
     layers,
     viewports,
+    views,
     onViewportActive,
     useDevicePixels,
     drawPickingColors = false,
@@ -83,6 +84,7 @@ export function drawLayers(
 
   viewports.forEach((viewportOrDescriptor, i) => {
     const viewport = getViewportFromDescriptor(viewportOrDescriptor);
+    const view = views && views[viewport.id];
 
     // Update context to point to this viewport
     onViewportActive(viewport);
@@ -91,6 +93,7 @@ export function drawLayers(
     drawLayersInViewport(gl, {
       layers,
       viewport,
+      view,
       useDevicePixels,
       drawPickingColors,
       deviceRect,
@@ -162,6 +165,7 @@ function drawLayersInViewport(
   {
     layers,
     viewport,
+    view,
     useDevicePixels,
     drawPickingColors = false,
     deviceRect = null,
@@ -174,6 +178,19 @@ function drawLayersInViewport(
 ) {
   const pixelRatio = getPixelRatio({useDevicePixels});
   const glViewport = getGLViewport(gl, {viewport, pixelRatio});
+
+  if (view && view.props.clear) {
+    withParameters(
+      gl,
+      {
+        scissorTest: true,
+        scissor: glViewport
+      },
+      () => {
+        gl.clear(GL.COLOR_BUFFER_BIT | GL.DEPTH_BUFFER_BIT);
+      }
+    );
+  }
 
   // render layers in normal colors
   const renderStats = {

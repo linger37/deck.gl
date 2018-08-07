@@ -76,10 +76,19 @@ export default class View {
       return this.viewportInstance;
     }
 
+    // viewState = this.filterViewState(viewState);
+
     // Resolve relative viewport dimensions
     const viewportDimensions = this.getDimensions({width, height});
     const props = Object.assign({viewState}, viewState, this.props, viewportDimensions);
     return this._getViewport(props);
+  }
+
+  // Allows view to filter the viewState
+  filterViewState(viewState) {
+    return this.props.viewStateFilter
+      ? this.props.viewStateFilter(Object.assign({}, viewState)) || viewState
+      : viewState;
   }
 
   // Resolve relative viewport dimensions into actual dimensions (y='50%', width=800 => y=400)
