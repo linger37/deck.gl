@@ -4,16 +4,34 @@ This page contains highlights of each deck.gl release. Also check our [vis.gl bl
 
 ## deck.gl v6.1
 
-Release date: TBD
+Release date: TBD, Target late Aug, 2018
+
+<table style="border: 0;" align="center">
+  <tbody>
+    <tr>
+      <td>
+        <img height=200 src="https://raw.github.com/uber-common/deck.gl-data/master/images/attribute-transition.gif" />
+        <p><i>JSON API</i></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+### JSON API
+
+A new experimental module `@deck.gl/json` provides a set of classes that allows deck.gl layers and views to be rendered using JSON specifications.
+
 
 ### Projection Modes
 
 - `LNGLAT_EXPERIMENTAL` mode
 - LNGLAT projection modes automatically wrap coordinates over the 180th meridian for the best placement in the current viewport. Set the `wrapCoordinates` prop in a layer to `false` to disable this behavior.
 
+
 ## deck.gl v6.0
 
-Release date: July 17, 2018
+Release date: July 18, 2018
 
 <table style="border: 0;" align="center">
   <tbody>

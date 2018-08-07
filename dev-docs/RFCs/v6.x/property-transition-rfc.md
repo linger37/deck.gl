@@ -1,13 +1,23 @@
-# RFC: Property Animation
+# RFC: Property Transitions
+
+> Note: This RFC Makes a strong distinction between "animation" and "transitions". For information the distinction, see the introduction, for more information aboutabout property animation, see the complementary RFC about that topic.
 
 * **Authors**: Ib Green, ...
-* **Date**: Feb 2018 (Initial version Aug 2017)
+* **Date**: Aug 2018 (Initial version Aug 2017)
 * **Status**: **Draft**
+
+
+References
+* [Property Animation RFC]()
+* [Property Types RFC]()
+* [Attribute Transition RFC]()
+* [Viewport Transition RFC]()
+
 
 
 ## Abstract
 
-Describes a system for *animations* and *transitions* of deck.gl layer properties.
+This RFC proposes a system for *transitions* or *interpolations* (not covering *animation*) of deck.gl layer properties.
 
 
 ## Motivation
@@ -17,13 +27,6 @@ Adding animation to an visualization, especially an interactive visualization, c
 The goal of this RFC is making it much easier for deck.gl users to achieve great animations and almost effortless to achieve good baseline animations, at least for in certain category of visualization property changes.
 
 
-## Considerations
-
-The topic of animation is quite complex. There are many ways animation can be implemented and facilitated, and people often expect different things. Therefore we anticipate multiple RFCs that address different aspects of animation.
-
-This RFC focused on animation of layer properties and GL parameters (i.e. `props.parameters`). It looks at automatic interpolation and time based animation of such properties.
-
-
 ## Summary
 
 The following proposals are included in this RFC:
@@ -31,8 +34,6 @@ The following proposals are included in this RFC:
 * Interpolation based animation - application sets a new state on layers, and they gradually adapt their visuals over time
     * Interpolation of uniforms...
     * Interpolation of gl parameters...
-
-- **Time based animation** - layers respond to time, often "pulsating or undulating" through calling a sine or similar function.
 
 
 The following types of animations are not included in this RFC.
